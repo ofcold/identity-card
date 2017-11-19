@@ -24803,7 +24803,12 @@ class IdentityCard
 	 */
 	public function getProvince() : ?string
 	{
-		return $this->regions[substr(static::$idCard, 0, 2).'0000'][static::locale] ?? null;
+		if ( !isset($province = $this->regions[substr(static::$idCard, 0, 2).'0000']) )
+		{
+			return null;
+		}
+
+		return $province[static::locale] ?? $province['zh-cn'];
 	}
 
 	/**
@@ -24813,7 +24818,12 @@ class IdentityCard
 	 */
 	public function getCity() : ?string
 	{
-		return $this->regions[substr(static::$idCard, 0, 4)][static::locale] ?? null;
+		if ( !isset($city = $this->regions[substr(static::$idCard, 0, 4)]) )
+		{
+			return null;
+		}
+
+		return $city[static::locale] ?? $city['zh-cn'];
 	}
 
 	/**
@@ -24823,24 +24833,22 @@ class IdentityCard
 	 */
 	public function getCounty() : ?string
 	{
-		return $this->regions[substr(static::$idCard, 0, 6)][static::locale] ?? null;
+		if ( !isset($county = $this->regions[substr(static::$idCard, 0, 6)]) )
+		{
+			return null;
+		}
+
+		return $county[static::locale] ?? $county['zh-cn'];
 	}
 
 	/**
 	 *	Gender.
 	 *
-	 *	@return		string|bool
+	 *	@return		string
 	 */
-	public function getGender()
+	public function getGender() : string
 	{
-		if ( $this->validateIDCard(static::$idCard) )
-		{
-			$gender = substr(static::$idCard, 16, 1);
-
-			return ($gender % 2 == 0) ? 'female' : 'male';
-		}
-
-		return false;
+		return (substr(static::$idCard, 16, 1) % 2 == 0) ? 'female' : 'male';
 	}
 
 	/**
