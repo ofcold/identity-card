@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Anomaly\\Component\\IdentityCard": "src/"
+            "Anomaly\\Component\\IdentityCard\\": "src/"
         }
     }
 }
