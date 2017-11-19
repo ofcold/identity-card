@@ -24718,9 +24718,13 @@ class IdentityCard
 	 */
 	protected function __construct()
 	{
-		if ( ! $this->validateIDCard() )
+		if ( ! $this->isCorrect() )
 		{
-			throw new \RuntimeException('Your ID card is not supported by the Chinese mainland government.');
+			throw new \RuntimeException([
+				'en'	=> 'Please provide the correct citizen ID number issued by the Chinese mainland government.',
+				'zh-cn'	=> '请提供中国大陆政府颁发的正确公民身份证号码。',
+				'zh-tw'	=> '請提供中國大陸政府頒發的正確公民身份證號碼。'
+			][static::$locale]);
 		}
 	}
 
@@ -24764,7 +24768,7 @@ class IdentityCard
 	 *
 	 *	@return		bool
 	 */
-	public function validateIDCard() : bool
+	public function isCorrect() : bool
 	{
 		$id = strtoupper(static::$idCard);
 
@@ -24907,6 +24911,37 @@ class IdentityCard
 			return $this->constellations[$month];
 		}
 		return $this->constellations[11];
+	}
+
+	/**
+	 *	Get the personal information of item as JSON.
+	 *
+	 *	@param		int		$options
+	 *
+	 *	@return		string
+	 */
+	public function toJson(int $options = 0) : string
+	{
+		return json_encode($this->toArray(), $options);
+	}
+
+	/**
+	 *	Get the personal information of item as a plain array.
+	 *
+	 *	@return		array
+	 */
+	public function toArray() : array
+	{
+		return [
+			'area'			=> $this->getArea();
+			'province'		=> $this->getProvince();
+			'city'			=> $this->getCity();
+			'county'		=> $this->getCounty();
+			'gender'		=> $this->getGender();
+			'birthday'		=> $this->getBirthday();
+			'age'			=> $this->getAge();
+			'constellation'	=> $this->getConstellation();
+		];
 	}
 
 }
