@@ -14,6 +14,8 @@ China (region) citizen ID card tool
 
 ### Instructions
 
+zh-cn
+
 ```php
 
     $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811');
@@ -26,8 +28,22 @@ China (region) citizen ID card tool
 
 
 ```
+en
 
-Results:
+```php
+
+    $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', en);
+
+    $area = $idCard->getArea();
+    $gender = $idCard->getGender();
+    $birthday = $idCard->getBirthday();
+    $age = $idCard->getAge();
+    $constellation = $idCard->getConstellation();
+
+
+```
+
+#### Results:
 ```json
 
 {
@@ -38,3 +54,13 @@ Results:
     "constellation": "天蝎座"
 }
 ```
+
+### Api
+getArea():string 获取地区
+getConstellation():string 获取星座
+getAge():int 获取年龄
+getBirthday(string $foramt = 'Y-m-d'):string 获取生日
+getGender():string获取性别
+getCounty():string|null获取县城
+getCity():string|null获取城市
+getProvince():string|null获取省
