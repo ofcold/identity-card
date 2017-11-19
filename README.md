@@ -56,11 +56,11 @@ en
 ```
 
 ### Api
-getArea():string 获取地区
-getConstellation():string 获取星座
-getAge():int 获取年龄
-getBirthday(string $foramt = 'Y-m-d'):string 获取生日
-getGender():string获取性别
-getCounty():string|null获取县城
-getCity():string|null获取城市
-getProvince():string|null获取省
+-`getArea():string` 获取地区
+-`getConstellation():string` 获取星座
+-`getAge():int` 获取年龄
+-`getBirthday(string $foramt = 'Y-m-d'):string` 获取生日
+-`getGender():string` 获取性别
+-`getCounty():string|null` 获取县城
+-`getCity():string|null` 获取城市
+-`getProvince():string|null` 获取省
