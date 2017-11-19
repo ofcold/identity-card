@@ -28,6 +28,7 @@ zh-cn
 
 
 ```
+
 en
 
 ```php
@@ -47,7 +48,7 @@ en
 ```json
 
 {
-    "area": "江苏省 南京市 鼓楼区",
+    "area": "Jiang 南京市 鼓楼区",
     "gender": "male",
     "birthday": "1983-10-29",
     "age": 34,
@@ -56,11 +57,11 @@ en
 ```
 
 ### Api
-    - `getArea():string` 获取地区
-    - `getConstellation():string` 获取星座
-    - `getAge():int` 获取年龄
-    - `getBirthday(string $foramt = 'Y-m-d'):string` 获取生日
-    - `getGender():string` 获取性别
-    - `getCounty():string|null` 获取县城
-    - `getCity():string|null` 获取城市
-    - `getProvince():string|null` 获取省
+- `getArea():string` 获取地区
+- `getConstellation():string` 获取星座
+- `getAge():int` 获取年龄
+- `getBirthday(string $foramt = 'Y-m-d'):string` 获取生日
+- `getGender():string` 获取性别
+- `getCounty():string|null` 获取县城
+- `getCity():string|null` 获取城市
+- `getProvince():string|null` 获取省
