@@ -24807,12 +24807,14 @@ class IdentityCard
 	 */
 	public function getProvince() : ?string
 	{
-		if ( !isset($province = $this->regions[substr(static::$idCard, 0, 2).'0000']) )
+		$k = substr(static::$idCard, 0, 2) . '0000';
+
+		if ( ! isset($this->regions[$k]) )
 		{
 			return null;
 		}
 
-		return $province[static::locale] ?? $province['zh-cn'];
+		return $this->regions[$k][static::$locale];
 	}
 
 	/**
@@ -24822,12 +24824,14 @@ class IdentityCard
 	 */
 	public function getCity() : ?string
 	{
-		if ( !isset($city = $this->regions[substr(static::$idCard, 0, 4)]) )
+		$k = substr(static::$idCard, 0, 4) . '00';
+
+		if ( ! isset($this->regions[$k]) )
 		{
 			return null;
 		}
 
-		return $city[static::locale] ?? $city['zh-cn'];
+		return $this->regions[$k][static::$locale];
 	}
 
 	/**
@@ -24837,12 +24841,14 @@ class IdentityCard
 	 */
 	public function getCounty() : ?string
 	{
-		if ( !isset($county = $this->regions[substr(static::$idCard, 0, 6)]) )
+		$k = substr(static::$idCard, 0, 6);
+
+		if ( ! isset($this->regions[$k]) )
 		{
 			return null;
 		}
 
-		return $county[static::locale] ?? $county['zh-cn'];
+		return $this->regions[$k][static::$locale];
 	}
 
 	/**
@@ -24933,14 +24939,14 @@ class IdentityCard
 	public function toArray() : array
 	{
 		return [
-			'area'			=> $this->getArea();
-			'province'		=> $this->getProvince();
-			'city'			=> $this->getCity();
-			'county'		=> $this->getCounty();
-			'gender'		=> $this->getGender();
-			'birthday'		=> $this->getBirthday();
-			'age'			=> $this->getAge();
-			'constellation'	=> $this->getConstellation();
+			'area'			=> $this->getArea(),
+			'province'		=> $this->getProvince(),
+			'city'			=> $this->getCity(),
+			'county'		=> $this->getCounty(),
+			'gender'		=> $this->getGender(),
+			'birthday'		=> $this->getBirthday(),
+			'age'			=> $this->getAge(),
+			'constellation'	=> $this->getConstellation()
 		];
 	}
 

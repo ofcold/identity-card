@@ -14,14 +14,33 @@ China (region) citizen ID card tool
 
 ### Instructions
 
+#### Verify your Chinese ID card
+```php
+
+    try {
+        $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('32010619831029081');
+        print_r($idCard->toArray());
+    }
+    catch (\Exception $e)
+    {
+        print_r($e->getMessage());
+    }
+
+
+```
+
+#### OR test file.
+```bash
+    php test
+```
+
 
 ```php
 
-    $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811');
-    //  Use locale, Current supported zh-cn,en
-    // $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
-
     try {
+        $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811');
+        //  Use locale, Current supported zh-cn,en
+        // $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
         $area = $idCard->getArea();
         $gender = $idCard->getGender();
         $birthday = $idCard->getBirthday();
@@ -59,3 +78,5 @@ China (region) citizen ID card tool
 - `getCounty():string|null` 获取县城
 - `getCity():string|null` 获取城市
 - `getProvince():string|null` 获取省
+- `toArray():array` 全部信息
+- `toJson(int $option):string` 全部信息

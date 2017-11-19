@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+try {
+	$idCard = Anomaly\Component\IdentityCard\IdentityCard::make('32010619831029081');
+	print_r($idCard->toArray());
+}
+catch (\Exception $e)
+{
+	print_r($e->getMessage());
+}
+
