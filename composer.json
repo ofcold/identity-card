@@ -1,0 +1,27 @@
+{
+    "name": "anomalylab/component-identity-card",
+    "description": "A simple proof of identity card of the people's Republic of China.",
+    "keywords": [
+    	"php71",
+    	"ID Card",
+    	"Region",
+    	"Area"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://anomalylab.org",
+    "authors": [
+        {
+            "name": "Bill li",
+            "email": "bill@anomalylab.org"
+        }
+    ],
+    "require": {
+        "php":       ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anomaly\\Component\\IdentityCard": "src/"
+        }
+    }
+}
