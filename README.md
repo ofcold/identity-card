@@ -14,35 +14,29 @@ China (region) citizen ID card tool
 
 ### Instructions
 
-zh-cn
 
 ```php
 
     $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811');
+    //  Use locale, Current supported zh-cn,en
+    // $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
 
-    $area = $idCard->getArea();
-    $gender = $idCard->getGender();
-    $birthday = $idCard->getBirthday();
-    $age = $idCard->getAge();
-    $constellation = $idCard->getConstellation();
-
-
-```
-
-en
-
-```php
-
-    $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', en);
-
-    $area = $idCard->getArea();
-    $gender = $idCard->getGender();
-    $birthday = $idCard->getBirthday();
-    $age = $idCard->getAge();
-    $constellation = $idCard->getConstellation();
+    try {
+        $area = $idCard->getArea();
+        $gender = $idCard->getGender();
+        $birthday = $idCard->getBirthday();
+        $age = $idCard->getAge();
+        $constellation = $idCard->getConstellation();
+    }
+    catch (\Exception $e)
+    {
+        $e->getMessage();
+    }
+        
 
 
 ```
+
 
 #### Results:
 ```json
