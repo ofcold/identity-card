@@ -1,7 +1,5 @@
 
-<p align="center"><a href="https://anomaly.org.cn" target="_blank">
-    <img src="id-card.png">
-</a></p>
+<p align="center"><img src="id-card.svg"></p>
 
 一个简单的身份证号码获取用户信息工具
 ------------------------
