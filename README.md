@@ -6,7 +6,7 @@
 
 >  中国（大陆地区）公民身份证，数据来源于国家标准GB/T 2260-2007 <a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/" target="blank">（中华人民共和国行政区划代码)</a>
 
-
+<br>
 ## 安装
 
 ```bash
