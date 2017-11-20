@@ -4,7 +4,7 @@
 China (region) citizen ID card tool
 ------------------------
 
->  China (Mainland) ID card package, the data from the national standard `GB / T 2260-2007`  <a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/" target="blank"> (People's Republic of China administrative divisions code standard).</a>
+>  China (Mainland) ID card package, the data from the national standard `GB/T 2260-2007`  <a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/" target="blank"> (People's Republic of China administrative divisions code standard).</a>
 
 ## Installing
 
