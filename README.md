@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://anomaly.org.cn" target="_blank" height="100">
+<p align="center"><a href="https://anomaly.org.cn" target="_blank" style="height:100px">
     <img src="id-card.png">
 </a></p>
 
