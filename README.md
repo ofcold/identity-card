@@ -1,6 +1,6 @@
 
 <p align="center"><a href="https://anomaly.org.cn" target="_blank">
-    <img src="id-card.svg">
+    <img src="id-card.png">
 </a></p>
 
 一个简单的身份证号码获取用户信息工具
