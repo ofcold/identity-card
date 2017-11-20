@@ -1,10 +1,11 @@
 
+
 China (region) citizen ID card tool
 ------------------------
 
 >  China (Mainland) ID card package, the data from the national standard `GB / T 2260-2007` (People's Republic of China administrative divisions code standard).  
 
-### Installing
+## Installing
 
 ```bash
 
@@ -12,7 +13,10 @@ China (region) citizen ID card tool
 ```
 
 
-### Instructions
+## Instructions
+A component based on People's Republic of China citizen ID card to obtain the user information.This works for any php framework, but only if the php version is greater than 7.1.
+
+## Useing
 
 #### Verify your Chinese ID card
 ```php
@@ -70,13 +74,13 @@ China (region) citizen ID card tool
 ```
 
 ### Api
-- `getArea():string` 获取地区
-- `getConstellation():string` 获取星座
-- `getAge():int` 获取年龄
-- `getBirthday(string $foramt = 'Y-m-d'):string` 获取生日
-- `getGender():string` 获取性别
-- `getCounty():string|null` 获取县城
-- `getCity():string|null` 获取城市
-- `getProvince():string|null` 获取省
-- `toArray():array` 全部信息
-- `toJson(int $option):string` 全部信息
+- getArea():string `获取地区`
+- getConstellation():string `获取星座`
+- getAge():int `获取年龄`
+- getBirthday(string $foramt = 'Y-m-d'):string `获取生日`
+- getGender():string `获取性别`
+- getCounty():string|null `获取县城`
+- getCity():string|null `获取城市`
+- getProvince():string|null `获取省`
+- toArray():array `全部信息`
+- toJson(int $option):string `全部信息`
