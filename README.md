@@ -33,7 +33,6 @@
         return false;
     }
 
-
 ```
 
 #### 或运行测试文件
@@ -57,8 +56,7 @@
     catch (\Exception $e)
     {
         $e->getMessage();
-    }
-        
+    } 
 
 
 ```
