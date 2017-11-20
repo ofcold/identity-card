@@ -17,7 +17,8 @@
 
 ## 说明
 一个基于中华人民共和国公民身份证的组件可以获取用户信息。这个适用于任何php框架，但是只有当php版本>=7.1时才可以。
-
+<br>
+<a href="README_en.md">English Documentation</a>
 
 ## 使用
 
