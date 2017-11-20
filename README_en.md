@@ -1,4 +1,7 @@
 
+<p align="center"><a href="https://anomaly.org.cn" target="_blank">
+    <img src="id-card.svg">
+</a></p>
 
 China (region) citizen ID card tool
 ------------------------
