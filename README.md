@@ -1,5 +1,14 @@
 
-<p align="center"><img src="id-card.svg"></p>
+<p align="center">
+    <img src="id-card.svg">
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/github/issues/anomalylab/identity-card.svg">
+    <img src="https://img.shields.io/github/forks/anomalylab/identity-card.svg">
+    <img src="https://img.shields.io/github/stars/anomalylab/identity-card.svg">
+    <img src="https://img.shields.io/github/license/anomalylab/identity-card.svg">
+</p>
 
 一个简单的身份证号码获取用户信息工具
 ------------------------
