@@ -24897,6 +24897,16 @@ class IdentityCard
 	}
 
 	/**
+	 *	Return user zodiac.
+	 *
+	 *	@return		string
+	 */
+	public function getZodiac() : string
+	{
+		return ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠'][abs(substr(static::$idCard, 10, 2) - 1901) % 12];
+	}
+
+	/**
 	 *	Get constellation.
 	 *
 	 *	@return		string
