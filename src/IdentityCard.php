@@ -36,6 +36,7 @@ class IdentityCard
 	 *	Create an new IdentityCard instance.
 	 *
 	 *	@param		string		$idCard
+	 *	@param		string		$locale
 	 *
 	 *	@return		$this
 	 */
@@ -43,9 +44,19 @@ class IdentityCard
 	{
 		static::$idCard = $idCard;
 
-		static::$locale = $locale;
+		static::$locale = in_array($locale, ['zh-cn', 'en']) ? $locale : 'zh-cn';
 
 		return static::$instance ?: static::$instance = new static;
+	}
+
+	/**
+	 *	Get the locale.
+	 *
+	 *	@return		string
+	 */
+	public static function getLocale() : string
+	{
+		return static::$locale ?: 'zh-cn';
 	}
 
 	/** 
@@ -54,30 +65,46 @@ class IdentityCard
 	 *	@var		array
 	 */
 	protected $constellations = [
-		// 1.21-2.19 [Aquarius]
-		'水瓶座', 
-		// 2.20-3.20 [Pisces]
-		'双鱼座',
-		// 3.21-4.19 [Aries]
-		'白羊座',
-		// 4.20-5.20 [Taurus]
-		'金牛座',
-		// 5.21-6.21 [Gemini]
-		'双子座',
-		// 6.22-7.22 [Cancer]
-		'巨蟹座',
-		// 7.23-8.22 [Leo]
-		'狮子座',
-		// 8.23-9.22 [Virgo]
-		'处女座',
-		// 9.23-10.23 [Libra]
-		'天秤座',
-		// 10.24-11.21 [Scorpio]
-		'天蝎座',
-		// 11.22-12.20 [Sagittarius]
-		'射手座',
-		// 12.21-1.20 [Capricorn]
-		'魔羯座',
+		'zh-cn'	=> [
+			// 1.21-2.19 [Aquarius]
+			'水瓶座', 
+			// 2.20-3.20 [Pisces]
+			'双鱼座',
+			// 3.21-4.19 [Aries]
+			'白羊座',
+			// 4.20-5.20 [Taurus]
+			'金牛座',
+			// 5.21-6.21 [Gemini]
+			'双子座',
+			// 6.22-7.22 [Cancer]
+			'巨蟹座',
+			// 7.23-8.22 [Leo]
+			'狮子座',
+			// 8.23-9.22 [Virgo]
+			'处女座',
+			// 9.23-10.23 [Libra]
+			'天秤座',
+			// 10.24-11.21 [Scorpio]
+			'天蝎座',
+			// 11.22-12.20 [Sagittarius]
+			'射手座',
+			// 12.21-1.20 [Capricorn]
+			'魔羯座',
+		],
+		'en'	=> [
+			'Aquarius',
+			'Pisces',
+			'Aries',
+			'Taurus',
+			'Gemini',
+			'Cancer',
+			'Leo',
+			'Virgo',
+			'Libra',
+			'Scorpio',
+			'Sagittarius',
+			'Capricorn',
+		]
 	];
 
 	/**
@@ -24715,16 +24742,17 @@ class IdentityCard
 	 *	Stop building an ID card instance.
 	 *
 	 *	@return		void
+	 *
+	 *	@throws		InvalidArgumentException
 	 */
 	protected function __construct()
 	{
 		if ( ! $this->isCorrect() )
 		{
-			throw new \RuntimeException([
+			throw new \InvalidArgumentException([
 				'en'	=> 'Please provide the correct citizen ID number issued by the Chinese mainland government.',
-				'zh-cn'	=> '请提供中国大陆政府颁发的正确公民身份证号码。',
-				'zh-tw'	=> '請提供中國大陸政府頒發的正確公民身份證號碼。'
-			][static::$locale]);
+				'zh-cn'	=> '请提供中国大陆政府颁发的正确公民身份证号码。'
+			][static::getLocale()]);
 		}
 	}
 
@@ -24852,13 +24880,18 @@ class IdentityCard
 	}
 
 	/**
-	 *	Gender.
+	 *	Get the user gender.
 	 *
 	 *	@return		string
 	 */
 	public function getGender() : string
 	{
-		return (substr(static::$idCard, 16, 1) % 2 == 0) ? 'female' : 'male';
+		$loale = [
+			'zh-cn'	=> ['female' => '女', 'male'	=> '男'],
+			'en'	=> ['female' => 'Female', 'male'	=> 'Male']
+		][static::getLocale()];
+
+		return $loale[(substr(static::$idCard, 16, 1) % 2 == 0) ? 'female' : 'male'];
 	}
 
 	/**
@@ -24883,7 +24916,7 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get age.
+	 *	Get the user age.
 	 *
 	 *	@return		int
 	 */
@@ -24903,11 +24936,16 @@ class IdentityCard
 	 */
 	public function getZodiac() : string
 	{
-		return ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠'][abs(substr(static::$idCard, 10, 2) - 1901) % 12];
+		$locale = [
+			'zh-cn'	=> ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠']
+			'en'	=> ['Cow', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Sheep', 'Monkey', 'Chicken', 'Dog', 'Pig', 'Rat']
+		][static::getLocale()];
+
+		return $locale[abs(substr(static::$idCard, 10, 2) - 1901) % 12];
 	}
 
 	/**
-	 *	Get constellation.
+	 *	Get the user constellation.
 	 *
 	 *	@return		string
 	 */
@@ -24924,9 +24962,10 @@ class IdentityCard
 
 		if ( $month > 0 )
 		{
-			return $this->constellations[$month];
+			return $this->constellations[static::getLocale()][$month];
 		}
-		return $this->constellations[11];
+
+		return $this->constellations[static::getLocale()][11];
 	}
 
 	/**
