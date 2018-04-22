@@ -20,7 +20,7 @@
 
 ```bash
 
-    composer require ofcold/component-identity-card
+    composer require ofcold/identity-card
 ```
 
 
@@ -35,7 +35,7 @@
 ```php
 
     try {
-        Ofcold\Component\IdentityCard\IdentityCard::make('32010619831029081');
+        Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
 
         return true;
     }
@@ -56,9 +56,9 @@
 ```php
 
     try {
-        $idCard = Ofcold\Component\IdentityCard\IdentityCard::make('320106198310290811');
+        $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811');
         //  Use locale, Current supported zh-cn,en
-        // $idCard = Ofcold\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
+        // $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
         $area = $idCard->getArea();
         $gender = $idCard->getGender();
         $birthday = $idCard->getBirthday();
