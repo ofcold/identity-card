@@ -1,5 +1,5 @@
 {
-    "name": "anomalylab/component-identity-card",
+    "name": "ofcold/component-identity-card",
     "description": "A simple proof of identity card of the people's Republic of China.",
     "keywords": [
     	"php71",
@@ -9,19 +9,34 @@
     ],
     "type": "library",
     "license": "MIT",
-    "homepage": "https://anomalylab.org",
+    "homepage": "https://ofcold.com",
     "authors": [
         {
-            "name": "Bill li",
-            "email": "bill@anomalylab.org"
+            "name": "Ofcold Team",
+            "email": "support@ofcold.com",
+            "homepage": "https://ofcold.com"
+        },
+        {
+            "name": "Olivia Fu",
+            "email": "olivia.fu@ofcold.com",
+            "homepage": "https://olivia.ink"
+        },
+        {
+            "name": "Bill Li",
+            "email": "bill@ofcold.com",
+            "homepage": "https://artisanbill.com"
         }
     ],
     "require": {
-        "php":       ">=7.1"
+        "php": ">=7.1"
     },
     "autoload": {
         "psr-4": {
-            "Anomaly\\Component\\IdentityCard\\": "src/"
+            "Ofcold\\IdentityCard\\": "src/"
         }
-    }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev"
 }

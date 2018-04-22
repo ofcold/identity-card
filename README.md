@@ -4,10 +4,10 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/issues/anomalylab/identity-card.svg">
-    <img src="https://img.shields.io/github/forks/anomalylab/identity-card.svg">
-    <img src="https://img.shields.io/github/stars/anomalylab/identity-card.svg">
-    <img src="https://img.shields.io/github/license/anomalylab/identity-card.svg">
+    <img src="https://img.shields.io/github/issues/ofcold/identity-card.svg">
+    <img src="https://img.shields.io/github/forks/ofcold/identity-card.svg">
+    <img src="https://img.shields.io/github/stars/ofcold/identity-card.svg">
+    <img src="https://img.shields.io/github/license/ofcold/identity-card.svg">
 </p>
 
 一个简单的身份证号码获取用户信息工具
@@ -20,7 +20,7 @@
 
 ```bash
 
-    composer require anomalylab/component-identity-card
+    composer require ofcold/component-identity-card
 ```
 
 
@@ -35,8 +35,8 @@
 ```php
 
     try {
-        Anomaly\Component\IdentityCard\IdentityCard::make('32010619831029081');
-        
+        Ofcold\Component\IdentityCard\IdentityCard::make('32010619831029081');
+
         return true;
     }
     catch (\Exception $e)
@@ -56,9 +56,9 @@
 ```php
 
     try {
-        $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811');
+        $idCard = Ofcold\Component\IdentityCard\IdentityCard::make('320106198310290811');
         //  Use locale, Current supported zh-cn,en
-        // $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
+        // $idCard = Ofcold\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
         $area = $idCard->getArea();
         $gender = $idCard->getGender();
         $birthday = $idCard->getBirthday();
@@ -68,7 +68,7 @@
     catch (\Exception $e)
     {
         $e->getMessage();
-    } 
+    }
 
 
 ```

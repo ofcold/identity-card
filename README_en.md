@@ -10,7 +10,7 @@ China (region) citizen ID card tool
 
 ```bash
 
-    composer require anomalylab/component-identity-card
+    composer require ofcold/component-identity-card
 ```
 
 
@@ -23,7 +23,7 @@ A component based on People's Republic of China citizen ID card to obtain the us
 ```php
 
     try {
-        $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('32010619831029081');
+        $idCard = Ofcold\Component\IdentityCard\IdentityCard::make('32010619831029081');
         print_r($idCard->toArray());
     }
     catch (\Exception $e)
@@ -43,9 +43,9 @@ A component based on People's Republic of China citizen ID card to obtain the us
 ```php
 
     try {
-        $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', 'en');
+        $idCard = Ofcold\Component\IdentityCard\IdentityCard::make('320106198310290811', 'en');
         //  Use locale, Current supported zh-cn,en
-        // $idCard = Anomaly\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
+        // $idCard = Ofcold\Component\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
         $area = $idCard->getArea();
         $gender = $idCard->getGender();
         $birthday = $idCard->getBirthday();
@@ -56,7 +56,7 @@ A component based on People's Republic of China citizen ID card to obtain the us
     {
         $e->getMessage();
     }
-        
+
 
 
 ```

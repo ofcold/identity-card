@@ -1,13 +1,18 @@
 <?php
 
-namespace Anomaly\Component\IdentityCard;
+namespace Ofcold\IdentityCard;
+
 
 /**
- *	Class IdentityCard
+ *  Class IdentityCard
  *
- *	@link			https://anomalylab.org
- *	@author			Anomaly lab, Inc <support@anomalylab.org>
- *	@author			Bill Li <bill@anomalylab.org>
+ *  @link       https://ofcold.ink
+ *
+ *  @author     Ofcold, Inc <support@ofcold.com>
+ *  @author     Olivia Fu <olivia@ofcold.com>
+ *  @author     Bill Li <bill.li@ofcold.com>
+ *
+ *  @package    Ofcold\IdentityCard\IdentityCard
  */
 class IdentityCard
 {
@@ -59,15 +64,15 @@ class IdentityCard
 		return static::$locale ?: 'zh-cn';
 	}
 
-	/** 
+	/**
 	 *	Constellations（Data from Wikipedia https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93）
-	 *	
+	 *
 	 *	@var		array
 	 */
 	protected $constellations = [
 		'zh-cn'	=> [
 			// 1.21-2.19 [Aquarius]
-			'水瓶座', 
+			'水瓶座',
 			// 2.20-3.20 [Pisces]
 			'双鱼座',
 			// 3.21-4.19 [Aries]
@@ -109,7 +114,7 @@ class IdentityCard
 
 	/**
 	 *	Constellation edge day cut data.
-	 *	
+	 *
 	 *	@var		array
 	 */
 	protected $constellationEdgeDays = [21, 20, 21, 20, 21, 22, 23, 23, 23, 24, 22, 21];
@@ -24815,7 +24820,7 @@ class IdentityCard
 		}
 
 		return false;
-			
+
 	}
 
 	/**
@@ -24906,11 +24911,11 @@ class IdentityCard
 		return date(
 			$format,
 			mktime(
-				0, 
-				0, 
-				0, 
-				substr(static::$idCard, 10, 2), 
-				substr(static::$idCard, 12, 2), 
+				0,
+				0,
+				0,
+				substr(static::$idCard, 10, 2),
+				substr(static::$idCard, 12, 2),
 				substr(static::$idCard, 6, 4))
 		);
 	}
