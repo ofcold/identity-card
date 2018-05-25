@@ -1,6 +1,5 @@
-
 <p align="center">
-    <img src="id-card.svg">
+    <img src="https://github.com/ofcold/identity-card/raw/2.0/id-card.svg?sanitize=true">
 </p>
 
 <p align="center">
