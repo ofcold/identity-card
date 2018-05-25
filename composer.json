@@ -18,7 +18,7 @@
         },
         {
             "name": "Olivia Fu",
-            "email": "olivia.fu@ofcold.com",
+            "email": "olivia@ofcold.com",
             "homepage": "https://olivia.ink"
         },
         {
@@ -34,6 +34,10 @@
         "psr-4": {
             "Ofcold\\IdentityCard\\": "src/"
         }
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^7.1"
     },
     "config": {
         "sort-packages": true
