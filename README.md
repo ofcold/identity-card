@@ -34,16 +34,15 @@
 #### 验证你的身份证号码
 ```php
 
-    try {
-        Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
+    //  返回false 或 Ofcold\IdentityCard\IdentityCard
+    $result = Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
 
-        return true;
+    if ( $result !== false ) {
+
+        return '您的身份证号码不正确';
     }
-    catch (\Exception $e)
-    {
-        print_r($e->getMessage());
-        return false;
-    }
+
+    print_r($result->toArray());
 
 ```
 
@@ -56,9 +55,9 @@
 ```php
 
     try {
-        $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811');
+        $idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054');
         //  Use locale, Current supported zh-cn,en
-        // $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
+        // $idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054', 'zh-cn');
         $area = $idCard->getArea();
         $gender = $idCard->getGender();
         $birthday = $idCard->getBirthday();
@@ -77,13 +76,18 @@
 #### 返回结果:
 ```json
 
-{
-    "area": "Jiang 南京市 鼓楼区",
-    "gender": "male",
-    "birthday": "1983-10-29",
-    "age": 34,
-    "constellation": "天蝎座"
-}
+Array
+(
+    [area] => 山西省 运城地区 运城市
+    [province] => 山西省
+    [city] => 运城地区
+    [county] => 运城市
+    [gender] => 男
+    [birthday] => 1980-03-12
+    [age] => 38
+    [constellation] => 双鱼座
+)
+
 ```
 
 

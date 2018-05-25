@@ -2,17 +2,19 @@
 
 namespace Ofcold\IdentityCard;
 
-
 /**
- *  Class IdentityCard
+ *	Class IdentityCard
  *
- *  @link       https://ofcold.ink
+ *	@link		https://ofcold.com
+ *	@link		https://ofcold.com/license
  *
- *  @author     Ofcold, Inc <support@ofcold.com>
- *  @author     Olivia Fu <olivia@ofcold.com>
- *  @author     Bill Li <bill.li@ofcold.com>
+ *	@author		Ofcold <support@ofcold.com>
+ *	@author		Olivia Fu <olivia@ofcold.com>
+ *	@author		Bill Li <bill.li@ofcold.com>
  *
- *  @package    Ofcold\IdentityCard\IdentityCard
+ *	@package	Ofcold\IdentityCard\IdentityCard
+ *
+ *	@copyright	Copyright (c) 2017-2018, Ofcold. All rights reserved.
  */
 class IdentityCard
 {
@@ -51,6 +53,11 @@ class IdentityCard
 
 		static::$locale = in_array($locale, ['zh-cn', 'en']) ? $locale : 'zh-cn';
 
+		if ( static::check() === false )
+		{
+			return false;
+		}
+
 		return static::$instance ?: static::$instance = new static;
 	}
 
@@ -62,6 +69,66 @@ class IdentityCard
 	public static function getLocale() : string
 	{
 		return static::$locale ?: 'zh-cn';
+	}
+
+	/**
+	 *	Verify your ID card is legal.
+	 *
+	 *	@return		bool
+	 */
+	protected static function check() : bool
+	{
+		$id = strtoupper(static::$idCard);
+
+		if ( static::checkFirst($id) === true )
+		{
+			$iYear  = substr($id, 6, 4);
+			$iMonth = substr($id, 10, 2);
+			$iDay   = substr($id, 12, 2);
+			if ( checkdate($iMonth, $iDay, $iYear) )
+			{
+				return static::getIDCardVerifyNumber(substr($id, 0, 17)) != substr($id, 17, 1) ? false : true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 *	Through the regular expression preliminary detection ID number illegality.
+	 *
+	 *	@param		string		$idCard
+	 *
+	 *	@return		bool
+	 */
+	protected static function checkFirst(string $idCard) : bool
+	{
+		return preg_match('/^\d{6}(18|19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/', $idCard);
+	}
+
+	/**
+	 *	According to the first 17 digits of ID card to calculate the last check digit of ID card
+	 *
+	 *	@param		string		$idcardBase
+	 *
+	 *	@return		string
+	 */
+	protected static function getIDCardVerifyNumber(string $idcardBase) : string
+	{
+		$factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+
+		$verifyNumberList = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+
+		$checksum = 0;
+
+		for ( $i = 0; $i < strlen($idcardBase); $i++ )
+		{
+			$checksum += substr($idcardBase, $i, 1) *	$factor[$i];
+		}
+
+		$mod = $checksum % 11;
+
+		return $verifyNumberList[$mod];
 	}
 
 	/**
@@ -24752,75 +24819,6 @@ class IdentityCard
 	 */
 	protected function __construct()
 	{
-		if ( ! $this->isCorrect() )
-		{
-			throw new \InvalidArgumentException([
-				'en'	=> 'Please provide the correct citizen ID number issued by the Chinese mainland government.',
-				'zh-cn'	=> '请提供中国大陆政府颁发的正确公民身份证号码。'
-			][static::getLocale()]);
-		}
-	}
-
-	/**
-	 *	Through the regular expression preliminary detection ID number illegality.
-	 *
-	 *	@param		string		$idCard
-	 *
-	 *	@return		bool
-	 */
-	private function checkFirst(string $idCard) : bool
-	{
-		return preg_match('/^\d{6}(18|19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/', $idCard);
-	}
-
-	/**
-	 *	According to the first 17 digits of ID card to calculate the last check digit of ID card
-	 *
-	 *	@param		string		$idcardBase
-	 *
-	 *	@return		string
-	 */
-	private function getIDCardVerifyNumber(string $idcardBase) : string
-	{
-		$factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
-
-		$verifyNumberList = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
-		$checksum = 0;
-		for ( $i = 0; $i < strlen($idcardBase); $i++ )
-		{
-			$checksum += substr($idcardBase, $i, 1) *	$factor[$i];
-		}
-
-		$mod = $checksum % 11;
-
-		return $verifyNumberList[$mod];
-	}
-
-	/**
-	 *	Verify your ID card is legal.
-	 *
-	 *	@return		bool
-	 */
-	public function isCorrect() : bool
-	{
-		$id = strtoupper(static::$idCard);
-
-		if ( $this->checkFirst($id) === true )
-		{
-			$iYear  = substr($id, 6, 4);
-			$iMonth = substr($id, 10, 2);
-			$iDay   = substr($id, 12, 2);
-			if ( checkdate($iMonth, $iDay, $iYear) )
-			{
-				$idcardBase = substr($id, 0, 17);
-
-				return $this->getIDCardVerifyNumber($idcardBase) != substr($id, 17, 1) ? false : true;
-			}
-
-		}
-
-		return false;
-
 	}
 
 	/**
@@ -24927,9 +24925,9 @@ class IdentityCard
 	 */
 	public function getAge() : int
 	{
-		$birthday =  strtotime(substr(static::$idCard, 6, 8));
 		$today	= strtotime('today');
-		$diff = floor(($today - $birthday)/86400/365);
+
+		$diff = floor(($today - strtotime(substr(static::$idCard, 6, 8)))/86400/365);
 
 		return (int) strtotime(substr(static::$idCard,6,8).' +'.$diff.'years') > $today ? ($diff + 1) : $diff;
 	}
@@ -24942,7 +24940,7 @@ class IdentityCard
 	public function getZodiac() : string
 	{
 		$locale = [
-			'zh-cn'	=> ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠']
+			'zh-cn'	=> ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠'],
 			'en'	=> ['Cow', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Sheep', 'Monkey', 'Chicken', 'Dog', 'Pig', 'Rat']
 		][static::getLocale()];
 
@@ -24957,7 +24955,9 @@ class IdentityCard
 	public function getConstellation() : string
 	{
 		$month = (int) substr(static::$idCard, 10, 2);
+
 		$month = $month - 1;
+
 		$day = (int) substr(static::$idCard, 12, 2);
 
 		if ( $day < $this->constellationEdgeDays[$month] )
@@ -25002,6 +25002,18 @@ class IdentityCard
 			'age'			=> $this->getAge(),
 			'constellation'	=> $this->getConstellation()
 		];
+	}
+
+	public function __get($key)
+	{
+		$result = $this->toArray();
+
+		return $result[$key] ?? $result;
+	}
+
+	public function __toString()
+	{
+		return $this->toJson();
 	}
 
 }
