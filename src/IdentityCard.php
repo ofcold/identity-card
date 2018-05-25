@@ -2,17 +2,19 @@
 
 namespace Ofcold\IdentityCard;
 
-
 /**
- *  Class IdentityCard
+ *	Class IdentityCard
  *
- *  @link       https://ofcold.ink
+ *	@link		https://ofcold.com
+ *	@link		https://ofcold.com/license
  *
- *  @author     Ofcold, Inc <support@ofcold.com>
- *  @author     Olivia Fu <olivia@ofcold.com>
- *  @author     Bill Li <bill.li@ofcold.com>
+ *	@author		Ofcold <support@ofcold.com>
+ *	@author		Olivia Fu <olivia@ofcold.com>
+ *	@author		Bill Li <bill.li@ofcold.com>
  *
- *  @package    Ofcold\IdentityCard\IdentityCard
+ *	@package	Ofcold\IdentityCard\IdentityCard
+ *
+ *	@copyright	Copyright (c) 2017-2018, Ofcold. All rights reserved.
  */
 class IdentityCard
 {
@@ -51,7 +53,37 @@ class IdentityCard
 
 		static::$locale = in_array($locale, ['zh-cn', 'en']) ? $locale : 'zh-cn';
 
+		if ( static::check() === false )
+		{
+			return false;
+		}
+
 		return static::$instance ?: static::$instance = new static;
+	}
+
+	/**
+	 *	Verify your ID card is legal.
+	 *
+	 *	@return		bool
+	 */
+	public static function check() : bool
+	{
+		$id = strtoupper(static::$idCard);
+
+		if ( $this->checkFirst($id) === true )
+		{
+			$iYear  = substr($id, 6, 4);
+			$iMonth = substr($id, 10, 2);
+			$iDay   = substr($id, 12, 2);
+			if ( checkdate($iMonth, $iDay, $iYear) )
+			{
+				$idcardBase = substr($id, 0, 17);
+
+				return static::getIDCardVerifyNumber($idcardBase) != substr($id, 17, 1) ? false : true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -62,6 +94,31 @@ class IdentityCard
 	public static function getLocale() : string
 	{
 		return static::$locale ?: 'zh-cn';
+	}
+
+	/**
+	 *	According to the first 17 digits of ID card to calculate the last check digit of ID card
+	 *
+	 *	@param		string		$idcardBase
+	 *
+	 *	@return		string
+	 */
+	protected function getIDCardVerifyNumber(string $idcardBase) : string
+	{
+		$factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+
+		$verifyNumberList = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+
+		$checksum = 0;
+
+		for ( $i = 0; $i < strlen($idcardBase); $i++ )
+		{
+			$checksum += substr($idcardBase, $i, 1) *	$factor[$i];
+		}
+
+		$mod = $checksum % 11;
+
+		return $verifyNumberList[$mod];
 	}
 
 	/**
@@ -24774,56 +24831,6 @@ class IdentityCard
 	}
 
 	/**
-	 *	According to the first 17 digits of ID card to calculate the last check digit of ID card
-	 *
-	 *	@param		string		$idcardBase
-	 *
-	 *	@return		string
-	 */
-	private function getIDCardVerifyNumber(string $idcardBase) : string
-	{
-		$factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
-
-		$verifyNumberList = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
-		$checksum = 0;
-		for ( $i = 0; $i < strlen($idcardBase); $i++ )
-		{
-			$checksum += substr($idcardBase, $i, 1) *	$factor[$i];
-		}
-
-		$mod = $checksum % 11;
-
-		return $verifyNumberList[$mod];
-	}
-
-	/**
-	 *	Verify your ID card is legal.
-	 *
-	 *	@return		bool
-	 */
-	public function isCorrect() : bool
-	{
-		$id = strtoupper(static::$idCard);
-
-		if ( $this->checkFirst($id) === true )
-		{
-			$iYear  = substr($id, 6, 4);
-			$iMonth = substr($id, 10, 2);
-			$iDay   = substr($id, 12, 2);
-			if ( checkdate($iMonth, $iDay, $iYear) )
-			{
-				$idcardBase = substr($id, 0, 17);
-
-				return $this->getIDCardVerifyNumber($idcardBase) != substr($id, 17, 1) ? false : true;
-			}
-
-		}
-
-		return false;
-
-	}
-
-	/**
 	 *	Get region with ID card.
 	 *
 	 *	@return		array
@@ -24927,9 +24934,9 @@ class IdentityCard
 	 */
 	public function getAge() : int
 	{
-		$birthday =  strtotime(substr(static::$idCard, 6, 8));
 		$today	= strtotime('today');
-		$diff = floor(($today - $birthday)/86400/365);
+
+		$diff = floor(($today - strtotime(substr(static::$idCard, 6, 8)))/86400/365);
 
 		return (int) strtotime(substr(static::$idCard,6,8).' +'.$diff.'years') > $today ? ($diff + 1) : $diff;
 	}
@@ -24942,7 +24949,7 @@ class IdentityCard
 	public function getZodiac() : string
 	{
 		$locale = [
-			'zh-cn'	=> ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠']
+			'zh-cn'	=> ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠'],
 			'en'	=> ['Cow', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Sheep', 'Monkey', 'Chicken', 'Dog', 'Pig', 'Rat']
 		][static::getLocale()];
 
