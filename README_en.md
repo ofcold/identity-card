@@ -1,5 +1,4 @@
-
-<p align="center"><img src="id-card.svg"></p>
+<p align="center"><img src="https://github.com/ofcold/identity-card/raw/2.0/id-card.svg?sanitize=true"></p>
 
 China (region) citizen ID card tool
 ------------------------
