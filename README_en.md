@@ -22,14 +22,15 @@ A component based on People's Republic of China citizen ID card to obtain the us
 #### Verify your Chinese ID card
 ```php
 
-    try {
-        $idCard = Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
-        print_r($idCard->toArray());
+    // Result false OR Ofcold\IdentityCard\IdentityCard instance.
+    $result = Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
+
+    if ( $result !== false ) {
+
+        return 'Your ID number is incorrect';
     }
-    catch (\Exception $e)
-    {
-        print_r($e->getMessage());
-    }
+
+    print_r($result->toArray());
 
 
 ```
@@ -65,13 +66,17 @@ A component based on People's Republic of China citizen ID card to obtain the us
 #### Results:
 ```json
 
-{
-    "area": "Jiangsu Nanjing Gulouqu",
-    "gender": "male",
-    "birthday": "1983-10-29",
-    "age": 34,
-    "constellation": "Scorpio"
-}
+Array
+(
+    [area] => shan xi sheng yun cheng di qu yun cheng shi
+    [province] => shan xi sheng
+    [city] => yun cheng di qu
+    [county] => yun cheng shi
+    [gender] => Male
+    [birthday] => 1980-03-12
+    [age] => 38
+    [constellation] => Pisces
+)
 ```
 
 ### Api
