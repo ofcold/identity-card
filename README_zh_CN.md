@@ -12,9 +12,12 @@
 一个简单的身份证号码获取用户信息工具
 ------------------------
 <br>
-<a href="https://github.com/ofcold/identity-card/blob/2.0/README.md">English Documentation</a>
+<p>
+    <a href="https://github.com/ofcold/identity-card/blob/2.0/README.md">English Documentation</a>
+</p>
+<br>
 
->  中国（大陆地区）公民身份证，数据来源于国家标准GB/T 2260-2007 <a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/" target="blank">（中华人民共和国行政区划代码)</a>
+>  中国（大陆地区）公民身份证，数据来源于国家标准GB/T 2260-2007 <a href="http://www.stats.gov.cn" target="_blank">（中华人民共和国行政区划代码)</a>
 
 <br>
 ## 安装
@@ -74,18 +77,16 @@
 
 #### 返回结果:
 ```json
-
-Array
-(
-    [area] => 山西省 运城地区 运城市
-    [province] => 山西省
-    [city] => 运城地区
-    [county] => 运城市
-    [gender] => 男
-    [birthday] => 1980-03-12
-    [age] => 38
-    [constellation] => 双鱼座
-)
+{
+    "area": "山西省 运城地区 运城市",
+    "province": "山西省",
+    "city": "运城地区",
+    "county": "运城市",
+    "gender": "男",
+    "birthday": "1980-03-12",
+    "age": 38,
+    "constellation": "双鱼座"
+}
 
 ```
 
@@ -101,3 +102,10 @@ Array
 - getProvince():string|null `获取省`
 - toArray():array `全部信息`
 - toJson(int $option):string `全部信息`
+
+## 修改历史
+V2.0.0
+* 新增 [#2](https://github.com/ofcold/identity-card/pull/2) __get()
+* 新增 [#2](https://github.com/ofcold/identity-card/pull/2) __toString()
+* 修改 [#2](https://github.com/ofcold/identity-card/pull/2) static make() 方法返回当前对象或者boolean类型
+* 移除 [#2](https://github.com/ofcold/identity-card/pull/2) 构造方法异常验证
