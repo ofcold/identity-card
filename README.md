@@ -29,7 +29,7 @@ A component based on People's Republic of China citizen ID card to obtain the us
     // Result false OR Ofcold\IdentityCard\IdentityCard instance.
     $result = Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
 
-    if ( $result !== false ) {
+    if ( $result === false ) {
 
         return 'Your ID number is incorrect';
     }
@@ -47,23 +47,18 @@ A component based on People's Republic of China citizen ID card to obtain the us
 
 ```php
 
-    try {
-        $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'en');
-        //  Use locale, Current supported zh-cn,en
-        // $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
-        $area = $idCard->getArea();
-        $gender = $idCard->getGender();
-        $birthday = $idCard->getBirthday();
-        $age = $idCard->getAge();
-        $constellation = $idCard->getConstellation();
-    }
-    catch (\Exception $e)
-    {
-        $e->getMessage();
-    }
+$idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'en');
+//  Use locale, Current supported zh-cn,en
+// $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
+if ( $result === false ) {
 
-
-
+    return 'Your ID number is incorrect';
+}
+$area = $idCard->getArea();
+$gender = $idCard->getGender();
+$birthday = $idCard->getBirthday();
+$age = $idCard->getAge();
+$constellation = $idCard->getConstellation();
 ```
 
 

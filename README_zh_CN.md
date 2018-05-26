@@ -39,7 +39,7 @@
     //  返回false 或 Ofcold\IdentityCard\IdentityCard
     $result = Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
 
-    if ( $result !== false ) {
+    if ( $result === false ) {
 
         return '您的身份证号码不正确';
     }
@@ -55,22 +55,19 @@
 
 
 ```php
+$idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'en');
+//  Use locale, Current supported zh-cn,en
+// $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
+if ( $result === false ) {
 
-    try {
-        $idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054');
-        //  Use locale, Current supported zh-cn,en
-        // $idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054', 'zh-cn');
-        $area = $idCard->getArea();
-        $gender = $idCard->getGender();
-        $birthday = $idCard->getBirthday();
-        $age = $idCard->getAge();
-        $constellation = $idCard->getConstellation();
-    }
-    catch (\Exception $e)
-    {
-        $e->getMessage();
-    }
+    return '您的身份证号码不正确';
+}
 
+$area = $idCard->getArea();
+$gender = $idCard->getGender();
+$birthday = $idCard->getBirthday();
+$age = $idCard->getAge();
+$constellation = $idCard->getConstellation();
 
 ```
 
