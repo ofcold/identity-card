@@ -58,7 +58,7 @@
 $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'en');
 //  Use locale, Current supported zh-cn,en
 // $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
-if ( $result === false ) {
+if ( $idCard === false ) {
 
     return '您的身份证号码不正确';
 }

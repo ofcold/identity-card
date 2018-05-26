@@ -50,7 +50,7 @@ A component based on People's Republic of China citizen ID card to obtain the us
 $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'en');
 //  Use locale, Current supported zh-cn,en
 // $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
-if ( $result === false ) {
+if ( $idCard === false ) {
 
     return 'Your ID number is incorrect';
 }
