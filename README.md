@@ -1,21 +1,13 @@
-<p align="center">
-    <img src="https://github.com/ofcold/identity-card/raw/2.0/id-card.svg?sanitize=true">
-</p>
+<p align="center"><img src="https://github.com/ofcold/identity-card/raw/2.0/id-card.svg?sanitize=true"></p>
 
-<p align="center">
-    <img src="https://img.shields.io/github/issues/ofcold/identity-card.svg">
-    <img src="https://img.shields.io/github/forks/ofcold/identity-card.svg">
-    <img src="https://img.shields.io/github/stars/ofcold/identity-card.svg">
-    <img src="https://img.shields.io/github/license/ofcold/identity-card.svg">
-</p>
-
-一个简单的身份证号码获取用户信息工具
+China (region) citizen ID card tool
 ------------------------
-
->  中国（大陆地区）公民身份证，数据来源于国家标准GB/T 2260-2007 <a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/" target="blank">（中华人民共和国行政区划代码)</a>
-
 <br>
-## 安装
+<a href="https://github.com/ofcold/identity-card/blob/2.0/README_zh_CN.md">Simplified Chinese Documentation</a>
+
+>  China (Mainland) ID card package, the data from the national standard `GB/T 2260-2007`  <a href="http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/" target="blank"> (People's Republic of China administrative divisions code standard).</a>
+
+## Installing
 
 ```bash
 
@@ -23,29 +15,28 @@
 ```
 
 
-## 说明
-一个基于中华人民共和国公民身份证的组件可以获取用户信息。这个适用于任何php框架，但是只有当php版本>=7.1时才可以。
-<br>
-<a href="README_en.md">English Documentation</a>
+## Instructions
+A component based on People's Republic of China citizen ID card to obtain the user information.This works for any php framework, but only if the php version is greater than 7.1.
 
-## 使用
+## Useing
 
-#### 验证你的身份证号码
+#### Verify your Chinese ID card
 ```php
 
-    //  返回false 或 Ofcold\IdentityCard\IdentityCard
+    // Result false OR Ofcold\IdentityCard\IdentityCard instance.
     $result = Ofcold\IdentityCard\IdentityCard::make('32010619831029081');
 
     if ( $result !== false ) {
 
-        return '您的身份证号码不正确';
+        return 'Your ID number is incorrect';
     }
 
     print_r($result->toArray());
 
+
 ```
 
-#### 或运行测试文件
+#### OR test file.
 ```bash
     php test
 ```
@@ -54,9 +45,9 @@
 ```php
 
     try {
-        $idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054');
+        $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'en');
         //  Use locale, Current supported zh-cn,en
-        // $idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054', 'zh-cn');
+        // $idCard = Ofcold\IdentityCard\IdentityCard::make('320106198310290811', 'zh-cn');
         $area = $idCard->getArea();
         $gender = $idCard->getGender();
         $birthday = $idCard->getBirthday();
@@ -69,35 +60,34 @@
     }
 
 
+
 ```
 
 
-#### 返回结果:
+#### Results:
 ```json
 
 Array
 (
-    [area] => 山西省 运城地区 运城市
-    [province] => 山西省
-    [city] => 运城地区
-    [county] => 运城市
-    [gender] => 男
+    [area] => shan xi sheng yun cheng di qu yun cheng shi
+    [province] => shan xi sheng
+    [city] => yun cheng di qu
+    [county] => yun cheng shi
+    [gender] => Male
     [birthday] => 1980-03-12
     [age] => 38
-    [constellation] => 双鱼座
+    [constellation] => Pisces
 )
-
 ```
 
-
-## Api
-- getArea():string `获取地区`
-- getConstellation():string `获取星座`
-- getAge():int `获取年龄`
-- getBirthday(string $foramt = 'Y-m-d'):string `获取生日`
-- getGender():string `获取性别`
-- getCounty():string|null `获取县城`
-- getCity():string|null `获取城市`
-- getProvince():string|null `获取省`
-- toArray():array `全部信息`
-- toJson(int $option):string `全部信息`
+### Api
+- getArea():string `Get Area`
+- getConstellation():string `Get constellation`
+- getAge():int `Get age`
+- getBirthday(string $foramt = 'Y-m-d'):string `Get birthday`
+- getGender():string `Get gender`
+- getCounty():string|null `Get county`
+- getCity():string|null `Get city`
+- getProvince():string|null `Get province`
+- toArray():array `Get all information.`
+- toJson(int $option):string `Json format all information`
