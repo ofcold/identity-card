@@ -24944,7 +24944,7 @@ class IdentityCard
 			'en'	=> ['Cow', 'Tiger', 'Rabbit', 'Dragon', 'Snake', 'Horse', 'Sheep', 'Monkey', 'Chicken', 'Dog', 'Pig', 'Rat']
 		][static::getLocale()];
 
-		return $locale[abs(substr(static::$idCard, 10, 2) - 1901) % 12];
+		return $locale[abs(substr(static::$idCard, 6, 4) - 1901) % 12];
 	}
 
 	/**
