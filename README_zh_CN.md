@@ -81,6 +81,7 @@ $constellation = $idCard->getConstellation();
     "county": "运城市",
     "gender": "男",
     "birthday": "1980-03-12",
+    "zodiac": "猪",
     "age": 38,
     "constellation": "双鱼座"
 }
@@ -91,6 +92,7 @@ $constellation = $idCard->getConstellation();
 ## Api
 - getArea():string `获取地区`
 - getConstellation():string `获取星座`
+- getZodiac() : string `获取生肖`
 - getAge():int `获取年龄`
 - getBirthday(string $foramt = 'Y-m-d'):string `获取生日`
 - getGender():string `获取性别`

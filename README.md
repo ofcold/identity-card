@@ -71,6 +71,7 @@ $constellation = $idCard->getConstellation();
     "county": "yun cheng shi",
     "gender": "Male",
     "birthday": "1980-03-12",
+    "zodiac": "Pig",
     "age": 38,
     "constellation": "Pisces"
 }
@@ -79,6 +80,7 @@ $constellation = $idCard->getConstellation();
 ### Api
 - getArea() : string `Get Area`
 - getConstellation() : string `Get constellation`
+- getZodiac() : string `Get zodiac`
 - getAge() : int `Get age`
 - getBirthday(string $foramt = 'Y-m-d') : string `Get birthday`
 - getGender() : string `Get gender`

@@ -24999,6 +24999,7 @@ class IdentityCard
 			'county'		=> $this->getCounty(),
 			'gender'		=> $this->getGender(),
 			'birthday'		=> $this->getBirthday(),
+			'zodiac'		=> $this->getZodiac(),
 			'age'			=> $this->getAge(),
 			'constellation'	=> $this->getConstellation()
 		];
