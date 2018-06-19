@@ -3,49 +3,49 @@
 namespace Ofcold\IdentityCard;
 
 /**
- *	Class IdentityCard
+ * Class IdentityCard
  *
- *	@link		https://ofcold.com
- *	@link		https://ofcold.com/license
+ * @link  https://ofcold.com
+ * @link  https://ofcold.com/license
  *
- *	@author		Ofcold <support@ofcold.com>
- *	@author		Olivia Fu <olivia@ofcold.com>
- *	@author		Bill Li <bill.li@ofcold.com>
+ * @author  Ofcold <support@ofcold.com>
+ * @author  Olivia Fu <olivia@ofcold.com>
+ * @author  Bill Li <bill.li@ofcold.com>
  *
- *	@package	Ofcold\IdentityCard\IdentityCard
+ * @package	Ofcold\IdentityCard\IdentityCard
  *
- *	@copyright	Copyright (c) 2017-2018, Ofcold. All rights reserved.
+ * @copyright  Copyright (c) 2017-2018, Ofcold. All rights reserved.
  */
 class IdentityCard
 {
 	/**
-	 *	The IdentityCard isntance.
+	 * The IdentityCard isntance.
 	 *
-	 *	@var		IdentityCard|null
+	 * @var  IdentityCard|null
 	 */
 	protected static $instance;
 
 	/**
-	 *	The user id card.
+	 * The user id card.
 	 *
-	 *	@var		string
+	 * @var  string
 	 */
 	protected static $idCard;
 
 	/**
-	 *	Get the lcoale slog.
+	 * Get the lcoale slog.
 	 *
-	 *	@var		string
+	 * @var  string
 	 */
 	protected static $locale;
 
 	/**
-	 *	Create an new IdentityCard instance.
+	 * Create an new IdentityCard instance.
 	 *
-	 *	@param		string		$idCard
-	 *	@param		string		$locale
+	 * @param  string  $idCard
+	 * @param  string  $locale
 	 *
-	 *	@return		$this
+	 * @return  $this
 	 */
 	public static function make(string $idCard, string $locale = 'zh-cn')
 	{
@@ -62,9 +62,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the locale.
+	 * Get the locale.
 	 *
-	 *	@return		string
+	 * @return  string
 	 */
 	public static function getLocale() : string
 	{
@@ -72,9 +72,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Verify your ID card is legal.
+	 * Verify your ID card is legal.
 	 *
-	 *	@return		bool
+	 * @return  bool
 	 */
 	protected static function check() : bool
 	{
@@ -95,11 +95,11 @@ class IdentityCard
 	}
 
 	/**
-	 *	Through the regular expression preliminary detection ID number illegality.
+	 * Through the regular expression preliminary detection ID number illegality.
 	 *
-	 *	@param		string		$idCard
+	 * @param  string  $idCard
 	 *
-	 *	@return		bool
+	 * @return  bool
 	 */
 	protected static function checkFirst(string $idCard) : bool
 	{
@@ -107,11 +107,11 @@ class IdentityCard
 	}
 
 	/**
-	 *	According to the first 17 digits of ID card to calculate the last check digit of ID card
+	 * According to the first 17 digits of ID card to calculate the last check digit of ID card
 	 *
-	 *	@param		string		$idcardBase
+	 * @param  string  $idcardBase
 	 *
-	 *	@return		string
+	 * @return  string
 	 */
 	protected static function getIDCardVerifyNumber(string $idcardBase) : string
 	{
@@ -123,7 +123,7 @@ class IdentityCard
 
 		for ( $i = 0; $i < strlen($idcardBase); $i++ )
 		{
-			$checksum += substr($idcardBase, $i, 1) *	$factor[$i];
+			$checksum += substr($idcardBase, $i, 1) * $factor[$i];
 		}
 
 		$mod = $checksum % 11;
@@ -132,9 +132,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Constellations（Data from Wikipedia https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93）
+	 * Constellations（Data from Wikipedia https://zh.wikipedia.org/wiki/%E8%A5%BF%E6%B4%8B%E5%8D%A0%E6%98%9F%E8%A1%93）
 	 *
-	 *	@var		array
+	 * @var  array
 	 */
 	protected $constellations = [
 		'zh-cn'	=> [
@@ -180,16 +180,16 @@ class IdentityCard
 	];
 
 	/**
-	 *	Constellation edge day cut data.
+	 * Constellation edge day cut data.
 	 *
-	 *	@var		array
+	 * @var  array
 	 */
 	protected $constellationEdgeDays = [21, 20, 21, 20, 21, 22, 23, 23, 23, 24, 22, 21];
 
 	/**
-	 *	People's Republic of China provincial administrative divisions code (excluding Hong Kong, Macao and Taiwan regions).
+	 * People's Republic of China provincial administrative divisions code (excluding Hong Kong, Macao and Taiwan regions).
 	 *
-	 *	var		array
+	 * @var  array
 	 */
 	protected $regions = [
 		'110000'	=> [
@@ -24811,20 +24811,20 @@ class IdentityCard
 	];
 
 	/**
-	 *	Stop building an ID card instance.
+	 * Stop building an ID card instance.
 	 *
-	 *	@return		void
+	 * @return  void
 	 *
-	 *	@throws		InvalidArgumentException
+	 * @throws  InvalidArgumentException
 	 */
 	protected function __construct()
 	{
 	}
 
 	/**
-	 *	Get region with ID card.
+	 * Get region with ID card.
 	 *
-	 *	@return		array
+	 * @return  array
 	 */
 	public function getArea()
 	{
@@ -24832,9 +24832,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the province.
+	 * Get the province.
 	 *
-	 *	@return		string|null
+	 * @return  string|null
 	 */
 	public function getProvince() : ?string
 	{
@@ -24849,9 +24849,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the city.
+	 * Get the city.
 	 *
-	 *	@return		string|null
+	 * @return  string|null
 	 */
 	public function getCity() : ?string
 	{
@@ -24866,9 +24866,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the county.
+	 * Get the county.
 	 *
-	 *	@return		string|null
+	 * @return  string|null
 	 */
 	public function getCounty() : ?string
 	{
@@ -24883,9 +24883,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the user gender.
+	 * Get the user gender.
 	 *
-	 *	@return		string
+	 * @return  string
 	 */
 	public function getGender() : string
 	{
@@ -24898,11 +24898,11 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get birthday date information.
+	 * Get birthday date information.
 	 *
-	 *	@param		string		$format		Dateformat Default example: 'Y-m-d'
+	 * @param		string		$format		Dateformat Default example: 'Y-m-d'
 	 *
-	 *	@return		string
+	 * @return  string
 	 */
 	public function getBirthday(string $format = 'Y-m-d') : string
 	{
@@ -24919,9 +24919,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the user age.
+	 * Get the user age.
 	 *
-	 *	@return		int
+	 * @return  int
 	 */
 	public function getAge() : int
 	{
@@ -24933,9 +24933,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Return user zodiac.
+	 * Return user zodiac.
 	 *
-	 *	@return		string
+	 * @return  string
 	 */
 	public function getZodiac() : string
 	{
@@ -24948,9 +24948,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the user constellation.
+	 * Get the user constellation.
 	 *
-	 *	@return		string
+	 * @return  string
 	 */
 	public function getConstellation() : string
 	{
@@ -24974,11 +24974,11 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the personal information of item as JSON.
+	 * Get the personal information of item as JSON.
 	 *
-	 *	@param		int		$options
+	 * @param  int  $options
 	 *
-	 *	@return		string
+	 * @return  string
 	 */
 	public function toJson(int $options = 0) : string
 	{
@@ -24986,9 +24986,9 @@ class IdentityCard
 	}
 
 	/**
-	 *	Get the personal information of item as a plain array.
+	 * Get the personal information of item as a plain array.
 	 *
-	 *	@return		array
+	 * @return  array
 	 */
 	public function toArray() : array
 	{
@@ -25005,6 +25005,13 @@ class IdentityCard
 		];
 	}
 
+	/**
+	 * Get a attibutes value from the object.
+	 *
+	 * @param  string $key
+	 *
+	 * @return mixed
+	 */
 	public function __get($key)
 	{
 		$result = $this->toArray();
@@ -25012,6 +25019,11 @@ class IdentityCard
 		return $result[$key] ?? $result;
 	}
 
+	/**
+	 * Returns a string json of this object.
+	 *
+	 * @return string
+	 */
 	public function __toString()
 	{
 		return $this->toJson();
