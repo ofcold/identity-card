@@ -12,7 +12,7 @@ China (region) citizen ID card tool
 >  China (Mainland) ID card package, the data from the national standard `GB/T 2260-2007`  <a href="http://www.stats.gov.cn" target="_blank"> (People's Republic of China administrative divisions code standard).</a>
 
 ## Other Language
-[.NET Rep](https://gitee.com/mick666/identity-card.NET)
+- [.NET Rep](https://gitee.com/mick666/identity-card.NET)
 
 ## Installing
 
