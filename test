@@ -3,7 +3,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-$idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054', 'en');
+$idCard = Ofcold\IdentityCard\IdentityCard::make('142701198003124054', 'zh-cn');
 
 if ( $idCard === false ) {
 	//	身份证号码不正确
