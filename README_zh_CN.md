@@ -2,13 +2,11 @@
     <img src="https://github.com/ofcold/identity-card/raw/2.0/id-card.svg?sanitize=true">
 </p>
 
-<p align="center">
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+![](https://img.shields.io/github/stars/ofcold/identity-card.svg)
+[![Total Downloads](https://poser.pugx.org/ofcold/identity-card/downloads?format=flat-square)](https://packagist.org/packages/ofcold/identity-card)
 
-    [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
-    [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-    ![](https://img.shields.io/github/stars/ofcold/identity-card.svg)
-    [![Total Downloads](https://poser.pugx.org/ofcold/identity-card/downloads?format=flat-square)](https://packagist.org/packages/ofcold/identity-card)
-</p>
 
 一个简单的身份证号码获取用户信息工具
 ------------------------
