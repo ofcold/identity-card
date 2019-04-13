@@ -122,7 +122,11 @@ $constellation = $idCard->getConstellation();
 
 
 ## CHANGELOG
-V2.0.0
+
+### V3.0.0
+- Added Laravel Rule.
+
+### V2.0.0
 * Added [#2](https://github.com/ofcold/identity-card/pull/2) __get()
 * Added [#2](https://github.com/ofcold/identity-card/pull/2) __toString()
 * Modifed [#2](https://github.com/ofcold/identity-card/pull/2) static make() Method returns the current object or boolean type
