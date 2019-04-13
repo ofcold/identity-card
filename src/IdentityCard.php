@@ -53,8 +53,7 @@ class IdentityCard
 
 		static::$locale = in_array($locale, ['zh-cn', 'en']) ? $locale : 'zh-cn';
 
-		if ( static::check() === false )
-		{
+		if (static::check() === false) {
 			return false;
 		}
 
@@ -80,13 +79,11 @@ class IdentityCard
 	{
 		$id = strtoupper(static::$idCard);
 
-		if ( static::checkFirst($id) === true )
-		{
+		if (static::checkFirst($id) === true) {
 			$iYear  = substr($id, 6, 4);
 			$iMonth = substr($id, 10, 2);
 			$iDay   = substr($id, 12, 2);
-			if ( checkdate($iMonth, $iDay, $iYear) )
-			{
+			if (checkdate($iMonth, $iDay, $iYear)) {
 				return static::getIDCardVerifyNumber(substr($id, 0, 17)) != substr($id, 17, 1) ? false : true;
 			}
 		}
@@ -121,8 +118,7 @@ class IdentityCard
 
 		$checksum = 0;
 
-		for ( $i = 0; $i < strlen($idcardBase); $i++ )
-		{
+		for ($i = 0; $i < strlen($idcardBase); $i++) {
 			$checksum += substr($idcardBase, $i, 1) * $factor[$i];
 		}
 
@@ -24824,7 +24820,7 @@ class IdentityCard
 	/**
 	 * Get region with ID card.
 	 *
-	 * @return  array
+	 * @return  string
 	 */
 	public function getArea()
 	{
@@ -24836,12 +24832,11 @@ class IdentityCard
 	 *
 	 * @return  string|null
 	 */
-	public function getProvince() : ?string
+	public function getProvince(): ?string
 	{
 		$k = substr(static::$idCard, 0, 2) . '0000';
 
-		if ( ! isset($this->regions[$k]) )
-		{
+		if (! isset($this->regions[$k])) {
 			return null;
 		}
 
@@ -24853,12 +24848,11 @@ class IdentityCard
 	 *
 	 * @return  string|null
 	 */
-	public function getCity() : ?string
+	public function getCity(): ?string
 	{
 		$k = substr(static::$idCard, 0, 4) . '00';
 
-		if ( ! isset($this->regions[$k]) )
-		{
+		if (! isset($this->regions[$k])) {
 			return null;
 		}
 
@@ -24874,8 +24868,7 @@ class IdentityCard
 	{
 		$k = substr(static::$idCard, 0, 6);
 
-		if ( ! isset($this->regions[$k]) )
-		{
+		if (! isset($this->regions[$k])) {
 			return null;
 		}
 
@@ -24900,7 +24893,7 @@ class IdentityCard
 	/**
 	 * Get birthday date information.
 	 *
-	 * @param		string		$format		Dateformat Default example: 'Y-m-d'
+	 * @param string $format Dateformat Default example: 'Y-m-d'
 	 *
 	 * @return  string
 	 */
@@ -24923,7 +24916,7 @@ class IdentityCard
 	 *
 	 * @return  int
 	 */
-	public function getAge() : int
+	public function getAge(): int
 	{
 		$today	= strtotime('today');
 
@@ -24937,7 +24930,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	public function getZodiac() : string
+	public function getZodiac(): string
 	{
 		$locale = [
 			'zh-cn'	=> ['牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪', '鼠'],
@@ -24952,7 +24945,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	public function getConstellation() : string
+	public function getConstellation(): string
 	{
 		$month = (int) substr(static::$idCard, 10, 2);
 
@@ -24960,13 +24953,11 @@ class IdentityCard
 
 		$day = (int) substr(static::$idCard, 12, 2);
 
-		if ( $day < $this->constellationEdgeDays[$month] )
-		{
+		if ($day < $this->constellationEdgeDays[$month]) {
 			$month = $month - 1;
 		}
 
-		if ( $month > 0 )
-		{
+		if ($month > 0) {
 			return $this->constellations[static::getLocale()][$month];
 		}
 
