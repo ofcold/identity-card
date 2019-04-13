@@ -41,7 +41,7 @@
     },
     "suggest": {
         "illuminate/validation": "Required to use In laravel, it is recommended to use in versions larger than laravel (^5.1)."
-    }
+    },
     "config": {
         "sort-packages": true
     },
