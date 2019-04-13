@@ -33,6 +33,30 @@
 
 ## 使用
 
+### 使用在 Laravel 表单验证
+
+> 多语言增加 `Please enter a valid Id Card` 到你的json语言包中
+
+```php
+
+use Ofcold\IdentityCard\Rules\IdCard;
+
+/**
+ * Get the validation rules that apply to the request.
+ *
+ * @return array
+ */
+public function rules()
+{
+    return [
+        'id_card'  => [
+            'required',
+            new IdCard
+        ]
+    ];
+}
+```
+
 #### 验证你的身份证号码
 ```php
 

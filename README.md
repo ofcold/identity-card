@@ -27,6 +27,30 @@ A component based on People's Republic of China citizen ID card to obtain the us
 
 ## Useing
 
+### Useing in Laravel Validation
+
+> Multi-language add `Please enter a valid Id Card` to your json language package.
+
+```php
+
+use Ofcold\IdentityCard\Rules\IdCard;
+
+/**
+ * Get the validation rules that apply to the request.
+ *
+ * @return array
+ */
+public function rules()
+{
+    return [
+        'id_card'  => [
+            'required',
+            new IdCard
+        ]
+    ];
+}
+```
+
 #### Verify your Chinese ID card
 ```php
 
