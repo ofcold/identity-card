@@ -1,9 +1,9 @@
 <p align="center"><img src="https://github.com/ofcold/identity-card/raw/2.0/id-card.svg?sanitize=true"></p>
 
 
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
-[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-![](https://img.shields.io/github/stars/ofcold/identity-card.svg)
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg?style=flat-square)](https://996.icu)
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
+![](https://img.shields.io/github/stars/ofcold/identity-card.svg?style=flat-square)
 [![Total Downloads](https://poser.pugx.org/ofcold/identity-card/downloads?format=flat-square)](https://packagist.org/packages/ofcold/identity-card)
 
 
