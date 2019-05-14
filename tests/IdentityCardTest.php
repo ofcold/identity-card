@@ -38,7 +38,7 @@ class IdentityCardTest extends PHPUnit\Framework\TestCase
 
 	public function testAge()
 	{
-		$this->assertEquals('38', $this->idCard->getAge());
+		$this->assertEquals('39', $this->idCard->getAge());
 	}
 
 	public function testConstellation()
