@@ -2,19 +2,6 @@
 
 namespace Ofcold\IdentityCard;
 
-/**
- * class IdentityCard
- *
- * PHP business application development core system
- *
- * This content is released under the Business System Toll License (MST)
- *
- * @link     https://ofcold.com
- *
- * @author   Bill Li (bill.li@ofcold.com) [Owner]
- *
- * @copyright  Copyright (c) 2017-2019 Bill Li, Ofcold Institute of Technology. All rights reserved.
- */
 class IdentityCard
 {
 	/**
@@ -44,7 +31,7 @@ class IdentityCard
 	 * @param  string  $idCard
 	 * @param  string  $locale
 	 *
-	 * @return  $this
+	 * @return  $this|boolean
 	 */
 	public static function make(string $idCard, string $locale = 'zh-cn')
 	{
@@ -64,7 +51,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	public static function getLocale() : string
+	public static function getLocale(): string
 	{
 		return static::$locale ?: 'zh-cn';
 	}
@@ -74,7 +61,7 @@ class IdentityCard
 	 *
 	 * @return  bool
 	 */
-	protected static function check() : bool
+	protected static function check(): bool
 	{
 		$id = strtoupper(static::$idCard);
 
@@ -97,7 +84,7 @@ class IdentityCard
 	 *
 	 * @return  bool
 	 */
-	protected static function checkFirst(string $idCard) : bool
+	protected static function checkFirst(string $idCard): bool
 	{
 		return preg_match('/^\d{6}(18|19|20)\d{2}(0[1-9]|1[012])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/', $idCard);
 	}
@@ -109,7 +96,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	protected static function getIDCardVerifyNumber(string $idcardBase) : string
+	protected static function getIDCardVerifyNumber(string $idcardBase): string
 	{
 		$factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
 
@@ -205,7 +192,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	public function getArea()
+	public function getArea(): string
 	{
 		return "{$this->getProvince()} {$this->getCity()} {$this->getCounty()}";
 	}
@@ -247,7 +234,7 @@ class IdentityCard
 	 *
 	 * @return  string|null
 	 */
-	public function getCounty() : ?string
+	public function getCounty(): ?string
 	{
 		$k = substr(static::$idCard, 0, 6);
 
@@ -263,7 +250,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	public function getGender() : string
+	public function getGender(): string
 	{
 		$loale = [
 			'zh-cn'	=> ['female' => '女', 'male'	=> '男'],
@@ -280,7 +267,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	public function getBirthday(string $format = 'Y-m-d') : string
+	public function getBirthday(string $format = 'Y-m-d'): string
 	{
 		return date(
 			$format,
@@ -354,7 +341,7 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	public function toJson(int $options = 0) : string
+	public function toJson(int $options = 0): string
 	{
 		return json_encode($this->toArray(), $options);
 	}
@@ -364,7 +351,7 @@ class IdentityCard
 	 *
 	 * @return  array
 	 */
-	public function toArray() : array
+	public function toArray(): array
 	{
 		return [
 			'area'			=> $this->getArea(),

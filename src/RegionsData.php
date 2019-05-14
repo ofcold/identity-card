@@ -2,21 +2,6 @@
 
 namespace Ofcold\IdentityCard;
 
-/**
- * class RegionsData
- *
- * People's Republic of China provincial administrative divisions code (excluding Hong Kong, Macao and Taiwan regions).
- *
- * PHP business application development core system
- *
- * This content is released under the Business System Toll License (MST)
- *
- * @link     https://ofcold.com
- *
- * @author   Bill Li (bill.li@ofcold.com) [Owner]
- *
- * @copyright  Copyright (c) 2017-2019 Bill Li, Ofcold Institute of Technology. All rights reserved.
- */
 class RegionsData
 {
     public static function items()

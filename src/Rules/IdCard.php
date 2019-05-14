@@ -2,23 +2,10 @@
 
 namespace Ofcold\IdentityCard\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\Rule as RuleInterface;
 use Ofcold\IdentityCard\IdentityCard;
 
-/**
- * class IdCard
- *
- * PHP business application development core system
- *
- * This content is released under the Business System Toll License (MST)
- *
- * @link     https://ofcold.com
- *
- * @author   Bill Li (bill.li@ofcold.com) [Owner]
- *
- * @copyright  Copyright (c) 2017-2019 Bill Li, Ofcold Institute of Technology. All rights reserved.
- */
-class IdCard implements Rule
+class IdCard implements RuleInterface
 {
     /**
      * Determine if the validation rule passes.
