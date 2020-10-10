@@ -9,21 +9,21 @@ class IdentityCard
 	 *
 	 * @var  IdentityCard|null
 	 */
-	protected static $instance;
+	protected static ?IdentityCard $instance = null;
 
 	/**
 	 * The user id card.
 	 *
 	 * @var  string
 	 */
-	protected static $idCard;
+	protected static string $idCard;
 
 	/**
 	 * Get the lcoale slog.
 	 *
 	 * @var  string
 	 */
-	protected static $locale;
+	protected static string $locale;
 
 	/**
 	 * Create an new IdentityCard instance.
