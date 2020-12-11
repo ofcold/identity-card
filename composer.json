@@ -2,7 +2,8 @@
 	"name": "ofcold/identity-card",
 	"description": "A simple proof of identity card of the people's Republic of China.",
 	"keywords": [
-		"php71",
+		"php7.x",
+		"php8.x",
 		"ID Card",
 		"Region",
 		"Area"
@@ -18,7 +19,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.4"
+		"php": "^7.4|^8.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -26,10 +27,10 @@
 		}
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^7.1"
+		"phpunit/phpunit": "^7.1|^8.0|^9.0"
 	},
 	"suggest": {
-		"illuminate/validation": "Required to use In laravel, it is recommended to use in versions larger than laravel (^5.1)."
+		"illuminate/validation": "Required to use In laravel, it is recommended to use in versions larger than laravel (^5.5)."
 	},
 	"config": {
 		"sort-packages": true
