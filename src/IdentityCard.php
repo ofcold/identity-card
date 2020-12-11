@@ -39,7 +39,7 @@ class IdentityCard
 
 		static::$locale = in_array($locale, ['zh-cn', 'en']) ? $locale : 'zh-cn';
 
-		if (static::check() === false) {
+		if (static::validate(static::$idCard) === false) {
 			return false;
 		}
 
@@ -59,11 +59,13 @@ class IdentityCard
 	/**
 	 * Verify your ID card is legal.
 	 *
+	 * @param string $idCard
+	 *
 	 * @return  bool
 	 */
-	protected static function check(): bool
+	public static function validate(string $idCard): bool
 	{
-		$id = strtoupper(static::$idCard);
+		$id = strtoupper($idCard);
 
 		if (static::checkFirst($id) === true) {
 			$iYear  = substr($id, 6, 4);
@@ -96,21 +98,21 @@ class IdentityCard
 	 *
 	 * @return  string
 	 */
-	protected static function getIDCardVerifyNumber(string $idcardBase): string
+	protected static function getIDCardVerifyNumber(string $idCard): string
 	{
-		$factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
+		$factors = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2];
 
-		$verifyNumberList = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
+		$numbers = ['1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'];
 
 		$checksum = 0;
 
-		for ($i = 0; $i < strlen($idcardBase); $i++) {
-			$checksum += substr($idcardBase, $i, 1) * $factor[$i];
+		for ($i = 0; $i < strlen($idCard); $i++) {
+			$checksum += substr($idCard, $i, 1) * $factors[$i];
 		}
 
 		$mod = $checksum % 11;
 
-		return $verifyNumberList[$mod];
+		return $numbers[$mod];
 	}
 
 	/**
