@@ -21,6 +21,11 @@ class IdentityCardTest extends PHPUnit\Framework\TestCase
 		$this->assertEquals(false, !is_a($this->idCard, IdentityCard::class));
 	}
 
+	public function testCheck()
+	{
+		$this->assertEquals(true, IdentityCard::validate('142701198003124054'));
+	}
+
 	public function testArea()
 	{
 		$this->assertEquals('山西省 运城地区 运城市', $this->idCard->getArea());
