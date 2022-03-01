@@ -145,7 +145,7 @@ class IdentityCard
 			// 11.22-12.20 [Sagittarius]
 			'射手座',
 			// 12.21-1.20 [Capricorn]
-			'魔羯座',
+			'摩羯座',
 		],
 		'en'	=> [
 			'Aquarius',
@@ -325,8 +325,8 @@ class IdentityCard
 
 		$day = (int) substr(static::$idCard, 12, 2);
 
-		if ($day < $this->constellationEdgeDays[$month]) {
-			$month = $month - 1;
+		if ($day >= $this->constellationEdgeDays[$month]) {
+			$month = $month + 1;
 		}
 
 		if ($month > 0) {
