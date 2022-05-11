@@ -145,7 +145,7 @@ class IdentityCard
 			// 11.22-12.20 [Sagittarius]
 			'射手座',
 			// 12.21-1.20 [Capricorn]
-			'魔羯座',
+			'摩羯座',
 		],
 		'en'	=> [
 			'Aquarius',
@@ -329,7 +329,7 @@ class IdentityCard
 			$month = $month - 1;
 		}
 
-		if ($month > 0) {
+		if ($month >= 0) {
 			return $this->constellations[static::getLocale()][$month];
 		}
 
