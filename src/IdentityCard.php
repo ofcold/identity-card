@@ -325,8 +325,8 @@ class IdentityCard
 
 		$day = (int) substr(static::$idCard, 12, 2);
 
-		if ($day >= $this->constellationEdgeDays[$month]) {
-			$month = $month + 1;
+		if ($day < $this->constellationEdgeDays[$month]) {
+			$month = $month - 1;
 		}
 
 		if ($month >= 0) {
